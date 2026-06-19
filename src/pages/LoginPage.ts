@@ -12,8 +12,10 @@ export class LoginPage {
 
   // Actions
   async navigate() {
-    await this.page.goto("https://practicesoftwaretesting.com/auth/login");
-    await this.page.waitForLoadState("networkidle");
+    await this.page.goto('https://practicesoftwaretesting.com/auth/login', {
+    waitUntil: 'domcontentloaded',
+    timeout: 30000
+  });
   }
 
   async enterEmail(email: string) {
