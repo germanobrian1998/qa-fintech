@@ -1,6 +1,8 @@
-import { Before, After, BeforeAll, AfterAll } from '@cucumber/cucumber';
+import { Before, After, BeforeAll, AfterAll, setDefaultTimeout } from '@cucumber/cucumber';
 import { chromium } from '@playwright/test';
 import { QAWorld } from './world';
+
+setDefaultTimeout(30000);
 
 BeforeAll(async function () {
   // Setup global si es necesario
@@ -12,6 +14,7 @@ Before(async function (this: QAWorld) {
     baseURL: process.env.BASE_URL || 'https://practicesoftwaretesting.com'
   });
   this.page = await this.context.newPage();
+  this.page.setDefaultTimeout(15000);  // agregá esta línea
 });
 
 After(async function (this: QAWorld, scenario) {
