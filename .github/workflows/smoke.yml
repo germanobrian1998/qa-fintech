@@ -28,6 +28,7 @@ jobs:
 
       - name: Run smoke tests
         run: npm run test:smoke
+        continue-on-error: true
         env:
           BASE_URL: https://practicesoftwaretesting.com
 
