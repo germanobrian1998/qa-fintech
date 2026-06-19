@@ -12,13 +12,15 @@ export class LoginPage {
 
   // Actions
   async navigate() {
-    await this.page.goto('https://practicesoftwaretesting.com/auth/login', {
-    waitUntil: 'domcontentloaded',
-    timeout: 30000
-  });
+    await this.page.goto("https://practicesoftwaretesting.com/auth/login", {
+      waitUntil: "domcontentloaded",
+      timeout: 30000,
+    });
+    await this.page.waitForSelector('[data-test="email"]', { timeout: 30000 });
   }
 
   async enterEmail(email: string) {
+    await this.emailInput.waitFor({ state: "visible", timeout: 30000 });
     await this.emailInput.fill(email);
   }
 
@@ -38,7 +40,7 @@ export class LoginPage {
 
   // Assertions
   async expectDashboardVisible() {
-    await expect(this.page).toHaveURL(/account/);
+    await expect(this.page).toHaveURL(/account/, { timeout: 30000 });
   }
 
   async expectFullName(name: string) {
