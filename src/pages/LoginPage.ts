@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Page, expect } from "@playwright/test";
 
 export class LoginPage {
   constructor(private page: Page) {}
@@ -12,7 +12,8 @@ export class LoginPage {
 
   // Actions
   async navigate() {
-    await this.page.goto('/auth/login');
+    await this.page.goto("https://practicesoftwaretesting.com/auth/login");
+    await this.page.waitForLoadState("networkidle");
   }
 
   async enterEmail(email: string) {
