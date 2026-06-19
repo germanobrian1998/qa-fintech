@@ -1,0 +1,36 @@
+{
+  "default": {
+    "require": [
+      "src/support/hooks.ts",
+      "src/steps/**/*.ts"
+    ],
+    "import": [],
+    "requireModule": [
+      "ts-node/register"
+    ],
+    "format": [
+      "progress-bar",
+      "html:reports/cucumber-report.html",
+      "json:reports/cucumber-report.json"
+    ],
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "paths": [
+      "src/features/**/*.feature"
+    ],
+    "parallel": 2
+  },
+  "smoke": {
+    "extends": "default",
+    "tags": "@smoke"
+  },
+  "regression": {
+    "extends": "default",
+    "tags": "@regression"
+  },
+  "security": {
+    "extends": "default",
+    "tags": "@security"
+  }
+}
